@@ -3,6 +3,7 @@
     "@rails/webpacker": "^3.0.2",
     "axios": "^0.17.0",
     "coffeescript": "1.12.7",
+    "jquery-touchswipe": "^1.6.15",
     "vue": "^2.5.2",
     "vue-loader": "^13.3.0",
     "vue-router": "^3.0.1",
