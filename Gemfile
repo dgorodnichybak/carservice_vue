@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -13,8 +13,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails', '= 0.3.4'
   gem 'pry', '~> 0.10', require: false
   gem 'pry-doc', require: false
@@ -30,9 +28,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'overcommit', require: false
+  gem 'rubocop', require: false
 end
 
 group :test do
-
   gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
 end
