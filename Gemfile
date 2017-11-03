@@ -17,6 +17,7 @@ group :development, :test do
   gem 'pry', '~> 0.10', require: false
   gem 'pry-doc', require: false
   gem 'rspec-rails', '~> 3.6'
+  gem 'json_matchers'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
   gem 'factory_bot_rails', '~> 4.7'
   gem 'faker'
