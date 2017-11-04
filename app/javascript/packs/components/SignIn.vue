@@ -5,6 +5,7 @@
       <div class="col-lg-4">
         <form>
           <div class="form-group">
+            {{errors}}
             <label for="exampleInputEmail1">Email address</label>
             <input label="E-mail" v-model="email" class="form-control" required ></input>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -19,7 +20,7 @@
               Check me out
             </label>
           </div>
-          <button type="submit" class="btn btn-primary" @click="login">Submit</button>
+          <button type="submit" class="btn btn-primary" @click.prevent="login">Submit</button>
         </form>
       </div>
     </div>
@@ -44,9 +45,11 @@ export default {
         email: this.email,
         password: this.password
       }).then(() => {
-        this.$router.push("/")
-      }).catch(e => {
-        console.log(e)
+        if(this.$store.getters.isLoggedIn) {
+          this.$router.push("/")
+        } else {
+          console.log(this.errors)
+        }
       })
     }
   },

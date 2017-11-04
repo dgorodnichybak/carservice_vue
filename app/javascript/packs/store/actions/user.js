@@ -1,17 +1,20 @@
 import axios from 'axios';
 
 export const login = ({ commit }, payload) => {
-  commit("LOGIN")
-    axios.post('/user/sessions', {
-      email: payload.email,
-      password: payload.password
+  return new Promise((resolve, reject) => {
+    commit("LOGIN")
+      axios.post('/user/sessions', {
+        email: payload.email,
+        password: payload.password
+      })
+    .then(response => {
+      localStorage.setItem('currentUser', JSON.stringify(response.data))
+        commit("LOGIN_SUCCESS", response.data)
+        resolve()
     })
-  .then(response => {
-    localStorage.setItem('currentUser', JSON.stringify(response.data))
-    commit("LOGIN_SUCCESS", response.data)
-  })
-  .catch(e => {
-    commit("LOGIN_FAIL", e)
+    .catch(e => {
+      commit("LOGIN_FAIL", e.response.statusText)
+    })
   })
 }
 
