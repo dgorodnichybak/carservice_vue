@@ -13,7 +13,8 @@ export const login = ({ commit }, payload) => {
         resolve()
     })
     .catch(e => {
-      commit("LOGIN_FAIL", e.response.statusText)
+      commit("LOGIN_FAIL", e.response.data.errors)
+      reject(e.response.data.errors)
     })
   })
 }

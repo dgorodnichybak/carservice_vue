@@ -5,7 +5,9 @@
       <div class="col-lg-4">
         <form>
           <div class="form-group">
-            {{errors}}
+            <div class='alert alert-danger' v-for='error in errors' role="alert">
+              {{error.base}}
+            </div>
             <label for="exampleInputEmail1">Email address</label>
             <input label="E-mail" v-model="email" class="form-control" required ></input>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -47,9 +49,9 @@ export default {
       }).then(() => {
         if(this.$store.getters.isLoggedIn) {
           this.$router.push("/")
-        } else {
-          console.log(this.errors)
         }
+      }).catch((errors) => {
+        this.errors = errors
       })
     }
   },
